@@ -1,11 +1,11 @@
 import "./App.css";
-import { FaInstagram, FaTelegramPlane, FaFacebookF } from "react-icons/fa";
+// import { FaInstagram, FaTelegramPlane, FaFacebookF } from "react-icons/fa";
 
 function App() {
   return (
     <div className="container">
       <div className="wrapper">
-        <img src="Logo.png" className="img" alt=""/>
+        <img src="LogoBlack.png" className="img" alt=""/>
         <div className="text">
           {" "}
           TTELD is an industry-leading electronic logging device. Our ELD
@@ -55,7 +55,7 @@ function App() {
             </div>
           </a>
         ))}
-        <div className="icons">
+        {/* <div className="icons">
           <span className="iconSpan">
 
             <FaInstagram className="iconWidth" />
@@ -71,7 +71,7 @@ function App() {
           </span>
           </a>
  
-        </div>
+        </div> */}
       </div>
     </div>
   );
