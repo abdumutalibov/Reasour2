@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="container">
       <div className="wrapper">
-        <img src="LogoBlack.png" className="img" alt=""/>
+        <img src="https://tteld.com/assets/images/custom/logo.svg" className="img" alt=""/>
         <div className="text">
           {" "}
           TTELD is an industry-leading electronic logging device. Our ELD
