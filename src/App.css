@@ -68,6 +68,7 @@ a{
 }
 .icons{
   display: flex;
+  margin-top: 10px;
 }
 .iconSpan{
   display: flex;

@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="container">
       <div className="wrapper">
-        <img src="Logo.png" className="img" />
+        <img src="Logo.png" className="img" alt=""/>
         <div className="text">
           {" "}
           TTELD is an industry-leading electronic logging device. Our ELD
@@ -163,14 +163,13 @@ const products = [
     // icon: app,
     path: "https://us.tteld.com/docs/Setup.pdf",
   },
-  // {
-  //   id: 9,
-  //   name: "Malfunction",
-  //   title:
-  //     "The guide when eld or driver application does not work as intended",
-  //   price: "Download",
-  //   path: "https://us.tteld.com/docs/EldMalfunction.pdf",
+  {
+    id: 9,
+    name2: "Malfunction",
+    title:
+      "The guide when eld or driver application does not work as intended",
+    price: "Download",
+    path: "https://us.tteld.com/docs/EldMalfunction.pdf",
 
-  //   stock: 86,
-  // },
+  },
 ];
