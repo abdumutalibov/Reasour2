@@ -6,13 +6,17 @@
 margin: 0px auto;
 background: #313136;
 max-width: 480px;
+width: 100%;
+
 }
 
 .wrapper{
   /* padding: 20px 0 0 0; */
-  margin: 40px 0 28px 0px;
+  margin: 40px 18px 28px 18px;
   /* background-color: rgb(101, 97, 97); */
-  max-width: 375px;
+  /* max-width: 375px; */
+  /* width: 100%; */
+  width: 100%;
 max-height: 812px;
 display: flex;
 flex-direction: column;
@@ -41,7 +45,7 @@ color: #FFFFFF;
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 339px;
+  /* max-width: 339px; */
   height: 48px;
   background: #48484d;
   /* background: #FFFFFF; */
