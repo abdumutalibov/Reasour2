@@ -1,25 +1,176 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { FaInstagram, FaTelegramPlane, FaFacebookF } from "react-icons/fa";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <div className="container">
+      <div className="wrapper">
+        <img src="Logo.png" className="img" />
+        <div className="text">
+          {" "}
+          TTELD is an industry-leading electronic logging device. Our ELD
+          compliance solution provides users with a wide variety of
+          comprehensive features.
+        </div>
+
+        <a className="box" href="https://us.tteld.com/update/tteld.apk">
+          <div>
+            <div className="textName">
+              <span>
+                Android <span className="middle">APK</span> download
+              </span>
+            </div>
+          </div>
         </a>
-      </header>
+
+        <a
+          className="box"
+          href="https://play.google.com/store/apps/details?id=com.tteld.app&hl=ru&gl=US"
+        >
+          <div>
+            <div className="textName">
+              <span>
+                TT ELD <span className="middle">Android</span> app download
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a
+          className="box"
+          href="https://apps.apple.com/uz/app/tt-eld/id1596279099"
+        >
+          <div>
+            <div className="textName">
+              <span>
+                TT ELD <span className="middle">iOS</span> app download{" "}
+              </span>
+            </div>
+          </div>
+        </a>
+        {products.map((item) => (
+          <a className="box" href={item.path} target="_blank" rel="noreferrer">
+            <div>
+              <div className="textName">{item.name2}</div>
+            </div>
+          </a>
+        ))}
+        <div className="icons">
+          <span className="iconSpan">
+
+            <FaInstagram className="iconWidth" />
+          </span>{" "}
+          <span className="iconSpan facebook">
+            {" "}
+            <FaFacebookF className="iconWidth" />
+          </span>{" "}
+          <a href="https://t.me/tteldsupport">
+                     <span className="iconSpan">
+            {" "}
+            <FaTelegramPlane className="iconWidth" />
+          </span>
+          </a>
+ 
+        </div>
+      </div>
     </div>
   );
 }
 
 export default App;
+
+const products = [
+  // {
+  //   // id: 1,
+
+  //   // name: `Android  ${'APK'} download `,
+  //   // name2: "APK",
+  //   // title:
+  //   //   "A simple sticker can help roadside or enforcement personnel quickly ascertain that the device on board is in fact an ELD and carry out the inspection accordingly.",
+  //   // price: "Download",
+  //   // icon: android,
+  //   // pathApk: "https://us.tteld.com/update/tteld.apk",
+  //   // stock: 20,
+  // },
+  // {
+  //   id: 2,
+  //   name: "TT ELD Android app download",
+  //   // name2:"IOS APP",
+  //    pathApk: "https://play.google.com/store/apps/details?id=com.tteld.app&hl=ru&gl=US",
+
+  //   // title: "TT ELD is certified for customers confidence and safety",
+  //   // price: "Download",
+  //   // icon: app,
+  //   stock: 32,
+  // },
+  // {
+  //   id: 3,
+  //   name: "TT ELD iOS app download ",
+  //   // name2: "APP",
+
+  //   // title: "Step by step guid for drivers during inspection",
+  //   // price: "Download",
+  //  pathApk: "https://apps.apple.com/uz/app/tt-eld/id1596279099",
+
+  //   // icon: play,
+  //   stock: 12,
+  // },
+  {
+    id: 4,
+
+    name2: "TT ELD Sticker ",
+    path: "https://us.tteld.com/docs/sticker.png",
+    title:
+      "A simple sticker can help roadside or enforcement personnel quickly ascertain that the device on board is in fact an ELD and carry out the inspection accordingly.",
+    price: "Download",
+    // icon: android,
+  },
+  {
+    id: 5,
+    name2: "Certificate",
+    // name2:"IOS APP",
+    path: "https://us.tteld.com/docs/Certificate.pdf",
+    title: "TT ELD is certified for customers confidence and safety",
+    price: "Download",
+    // icon: app,
+  },
+  {
+    id: 6,
+    name2: "Inspection ",
+    // name2:"APP",
+    path: "https://us.tteld.com/docs/Inspection.pdf",
+
+    title: "Step by step guid for drivers during inspection",
+    price: "Download",
+
+    // icon: play,
+  },
+  {
+    id: 7,
+    name2: "Users manual",
+    title:
+      "The source for both drivers and dispatchers to guide while using TT ELD",
+    price: "Download",
+    // icon: play,
+    path: "https://us.tteld.com/docs/Usersmanual.pdf",
+  },
+  {
+    id: 8,
+    name2: "Installation",
+    title:
+      "Quick instruction to setup both driver application and eld device before using TT ELD",
+    price: "Download",
+    // icon: app,
+    path: "https://us.tteld.com/docs/Setup.pdf",
+  },
+  // {
+  //   id: 9,
+  //   name: "Malfunction",
+  //   title:
+  //     "The guide when eld or driver application does not work as intended",
+  //   price: "Download",
+  //   path: "https://us.tteld.com/docs/EldMalfunction.pdf",
+
+  //   stock: 86,
+  // },
+];
