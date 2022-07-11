@@ -8,7 +8,7 @@ function App() {
         <img src="https://tteld.com/assets/images/custom/logo.svg" className="img" alt=""/>
         <div className="text">
           {" "}
-          TTELD is an industry-leading electronic logging device. Our ELD
+          TT ELD is an industry-leading electronic logging device. Our ELD
           compliance solution provides users with a wide variety of
           comprehensive features.
         </div>
