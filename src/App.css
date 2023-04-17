@@ -98,3 +98,9 @@ a{
   width: 25px;
   height: 25px;
 }
+.others{
+  padding-bottom: 15px;
+  color: #6f6f6f;
+  text-decoration: underline;
+  cursor: pointer;
+}

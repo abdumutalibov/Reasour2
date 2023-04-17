@@ -1,13 +1,22 @@
+import { useState } from "react";
 import "./App.css";
-// import { FaInstagram, FaTelegramPlane, FaFacebookF } from "react-icons/fa";
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [isFalse , setIsFalse] =useState(true)
+  const togleFalse =()=>{
+    setIsOpen(!isFalse)
+  }
+  const togleOpen = ()=>{
+    setIsFalse(!isFalse)
+    setIsOpen(!isOpen)
+    
+  }
   return (
     <div className="container">
       <div className="wrapper">
         <img src="https://tteld.com/assets/images/custom/logo.svg" className="img" alt=""/>
         <div className="text">
-          {" "}
           TT ELD is an industry-leading electronic logging device. Our ELD
           compliance solution provides users with a wide variety of
           comprehensive features.
@@ -23,7 +32,13 @@ function App() {
           </div>
         </a>
 
-        <a
+
+
+  {isFalse && <div className="others" onClick={togleOpen} >Other links</div>}
+
+{isOpen ? ( 
+  <>
+<a
           className="box"
           href="https://play.google.com/store/apps/details?id=com.tteld.app&hl=ru&gl=US"
         >
@@ -35,8 +50,8 @@ function App() {
             </div>
           </div>
         </a>
-
-        <a
+        
+         <a
           className="box"
           href="https://apps.apple.com/uz/app/tt-eld/id1596279099"
         >
@@ -48,6 +63,7 @@ function App() {
             </div>
           </div>
         </a>
+   
         {products.map((item) => (
           <a className="box" href={item.path} target="_blank" rel="noreferrer">
             <div>
@@ -55,23 +71,9 @@ function App() {
             </div>
           </a>
         ))}
-        {/* <div className="icons">
-          <span className="iconSpan">
 
-            <FaInstagram className="iconWidth" />
-          </span>{" "}
-          <span className="iconSpan facebook">
-            {" "}
-            <FaFacebookF className="iconWidth" />
-          </span>{" "}
-          <a href="https://t.me/tteldsupport">
-                     <span className="iconSpan">
-            {" "}
-            <FaTelegramPlane className="iconWidth" />
-          </span>
-          </a>
- 
-        </div> */}
+        </>
+        ):('')}
       </div>
     </div>
   );
@@ -80,41 +82,7 @@ function App() {
 export default App;
 
 const products = [
-  // {
-  //   // id: 1,
 
-  //   // name: `Android  ${'APK'} download `,
-  //   // name2: "APK",
-  //   // title:
-  //   //   "A simple sticker can help roadside or enforcement personnel quickly ascertain that the device on board is in fact an ELD and carry out the inspection accordingly.",
-  //   // price: "Download",
-  //   // icon: android,
-  //   // pathApk: "https://us.tteld.com/update/tteld.apk",
-  //   // stock: 20,
-  // },
-  // {
-  //   id: 2,
-  //   name: "TT ELD Android app download",
-  //   // name2:"IOS APP",
-  //    pathApk: "https://play.google.com/store/apps/details?id=com.tteld.app&hl=ru&gl=US",
-
-  //   // title: "TT ELD is certified for customers confidence and safety",
-  //   // price: "Download",
-  //   // icon: app,
-  //   stock: 32,
-  // },
-  // {
-  //   id: 3,
-  //   name: "TT ELD iOS app download ",
-  //   // name2: "APP",
-
-  //   // title: "Step by step guid for drivers during inspection",
-  //   // price: "Download",
-  //  pathApk: "https://apps.apple.com/uz/app/tt-eld/id1596279099",
-
-  //   // icon: play,
-  //   stock: 12,
-  // },
   {
     id: 4,
 
@@ -170,6 +138,13 @@ const products = [
       "The guide when eld or driver application does not work as intended",
     price: "Download",
     path: "https://us.tteld.com/docs/EldMalfunction.pdf",
-
+  },
+  {
+    id: 10,
+    name2: "Download IOSIX update file",
+    title:
+        "The guide when eld or driver application does not work as intended",
+    price: "Download",
+    path: "http://192.168.4.1",
   },
 ];
