@@ -31,14 +31,23 @@ function App() {
             </div>
           </div>
         </a>
-
-
-
   {isFalse && <div className="others" onClick={togleOpen} >Other links</div>}
 
 {isOpen ? ( 
   <>
       <a
+          className="box"
+          href="https://us.tteld.com/update/4.apk"
+        >
+          <div>
+            <div className="textName">
+              <span>
+                Android <span className="middle">APK 4</span> download
+              </span>
+            </div>
+          </div>
+        </a>
+    <a
           className="box"
           href="https://play.google.com/store/apps/details?id=com.tteld.app&hl=ru&gl=US"
         >
