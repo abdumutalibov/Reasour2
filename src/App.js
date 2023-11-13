@@ -38,7 +38,7 @@ function App() {
 
 {isOpen ? ( 
   <>
-<a
+      <a
           className="box"
           href="https://play.google.com/store/apps/details?id=com.tteld.app&hl=ru&gl=US"
         >
@@ -53,8 +53,7 @@ function App() {
         
          <a
           className="box"
-          href="https://apps.apple.com/uz/app/tt-eld/id1596279099"
-        >
+          href="https://apps.apple.com/uz/app/tt-eld/id1596279099">
           <div>
             <div className="textName">
               <span>
@@ -63,7 +62,19 @@ function App() {
             </div>
           </div>
         </a>
-   
+
+    <a
+        className="box"
+        href="https://apps.apple.com/uz/app/tt-eld/id1596279099">
+      <div>
+        <div className="textName">
+              <span>
+                IOSIX update <span className="middle">APK</span>
+              </span>
+        </div>
+      </div>
+    </a>
+
         {products.map((item) => (
           <a className="box" href={item.path} target="_blank" rel="noreferrer">
             <div>
@@ -139,12 +150,5 @@ const products = [
     price: "Download",
     path: "https://us.tteld.com/docs/EldMalfunction.pdf",
   },
-  {
-    id: 10,
-    name2: "Download IOSIX update file",
-    title:
-        "The guide when eld or driver application does not work as intended",
-    price: "Download",
-    path: "http://192.168.4.1",
-  },
+
 ];
