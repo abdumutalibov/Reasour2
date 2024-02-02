@@ -42,7 +42,7 @@ function App() {
           <div>
             <div className="textName">
               <span>
-                Android <span className="middle">APK 4</span> download
+                Android <span className="middle">APK 4.6.7</span> download
               </span>
             </div>
           </div>
