@@ -15,23 +15,23 @@ function App() {
   return (
     <div className="container">
       <div className="wrapper">
-        <img src="https://tteld.com/assets/images/custom/logo.svg" className="img" alt=""/>
+        <img style={{width:'200px'}} src="ontime.png" className="img" alt=""/>
         <div className="text">
-          TT ELD is an industry-leading electronic logging device. Our ELD
+          Ontime-logs is an industry-leading electronic logging device. Our ELD
           compliance solution provides users with a wide variety of
           comprehensive features.
         </div>
 
-        <a className="box" href="https://us.tteld.com/update/tteld.apk">
+        <a className="box" href="https://us.ontime-logs.com/ontime-logs.apk">
           <div>
             <div className="textName">
               <span>
-                Android <span className="middle">APK</span> download
+                Ontime-logs <span className="middle">APK</span> download
               </span>
             </div>
           </div>
         </a>
-  {isFalse && <div className="others" onClick={togleOpen} >Other links</div>}
+  {/*{isFalse && <div className="others" onClick={togleOpen} >Other links</div>}*/}
 
 {isOpen ? ( 
   <>
