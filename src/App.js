@@ -1,9 +1,13 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import "./App.css";
+import axios from "axios";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
   const [isFalse , setIsFalse] =useState(true)
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const togleFalse =()=>{
     setIsOpen(!isFalse)
   }
@@ -12,6 +16,36 @@ function App() {
     setIsOpen(!isOpen)
     
   }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://uat.tteld.com/api/apps/last-app?type=native');
+        setData(response.data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  const handleDownload = async () => {
+    const fileUrl = `https://uat.tteld.com/${data?.link}`;
+    const anchor = document.createElement('a');
+    anchor.href = fileUrl;
+    anchor.download = 'apk';
+    anchor.click();
+  };
   return (
     <div className="container">
       <div className="wrapper">
