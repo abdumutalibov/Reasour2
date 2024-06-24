@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://uat.tteld.com/api/apps/last-app?type=native');
+        const response = await axios.get('https://uat.tteld.com/api/apps/last-app');
         setData(response.data);
       } catch (err) {
         setError(err);
@@ -38,14 +38,33 @@ function App() {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-
   const handleDownload = async () => {
-    const fileUrl = `https://uat.tteld.com/${data?.link}`;
-    const anchor = document.createElement('a');
-    anchor.href = fileUrl;
-    anchor.download = 'apk';
-    anchor.click();
+    if (!data?.data?.id || !data?.data?.link) {
+      console.error('Invalid data for download');
+      return;
+    }
+
+    const postUrl = `https://uat.tteld.com/apps/downloads-up/${data.data.id}`;
+    const fileUrl = `https://uat.tteld.com/${data.data.link}`;
+
+    try {
+      // Send POST request
+      await axios.post(postUrl);
+
+      // Create an anchor element and initiate download
+      const anchor = document.createElement('a');
+      anchor.href = fileUrl;
+      anchor.download = 'apk';
+      document.body.appendChild(anchor);
+      anchor.click();
+
+      // Remove the anchor element after the download
+      document.body.removeChild(anchor);
+    } catch (error) {
+      console.error('Error during the download process:', error);
+    }
   };
+
   return (
     <div className="container">
       <div className="wrapper">
@@ -56,7 +75,7 @@ function App() {
           comprehensive features.
         </div>
 
-        <a className="box" href="https://us.ontime-logs.com/ontime-logs.apk">
+        <div className="box"  onClick={handleDownload}>
           <div>
             <div className="textName">
               <span>
@@ -64,7 +83,7 @@ function App() {
               </span>
             </div>
           </div>
-        </a>
+        </div>
   {/*{isFalse && <div className="others" onClick={togleOpen} >Other links</div>}*/}
 
 {isOpen ? ( 
