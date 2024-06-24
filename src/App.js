@@ -49,18 +49,18 @@ function App() {
   return (
     <div className="container">
       <div className="wrapper">
-        <img src="Logo.svg" className="img" alt="" style={{width:'200px'}}/>
+        <img style={{width:'200px'}} src="ontime.png" className="img" alt=""/>
         <div className="text">
-          Zippy ELD is an industry-leading electronic logging device. Our ELD
+          Ontime-logs is an industry-leading electronic logging device. Our ELD
           compliance solution provides users with a wide variety of
           comprehensive features.
         </div>
 
-        <a className="box" href="https://us.zippyeld.com/zippy.apk">
+        <a className="box" href="https://us.ontime-logs.com/ontime-logs.apk">
           <div>
             <div className="textName">
               <span>
-                Android <span className="middle">APK</span> download
+                Ontime-logs <span className="middle">APK</span> download
               </span>
             </div>
           </div>
