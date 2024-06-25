@@ -44,21 +44,18 @@ function App() {
       return;
     }
 
-    const postUrl = `https://uat.tteld.com/apps/downloads-up/${data.data.id}`;
+    const postUrl = `https://uat.tteld.com/api/apps/downloads-up/${data.data.id}`;
     const fileUrl = `https://uat.tteld.com/${data.data.link}`;
 
     try {
-      // Send POST request
       await axios.post(postUrl);
 
-      // Create an anchor element and initiate download
       const anchor = document.createElement('a');
       anchor.href = fileUrl;
       anchor.download = 'apk';
       document.body.appendChild(anchor);
       anchor.click();
 
-      // Remove the anchor element after the download
       document.body.removeChild(anchor);
     } catch (error) {
       console.error('Error during the download process:', error);
