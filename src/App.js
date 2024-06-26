@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://uat.tteld.com/api/apps/last-app');
+        const response = await axios.get('https://front-api.ontime-logs.com/api/apps/last-app');
         setData(response.data);
       } catch (err) {
         setError(err);
@@ -36,7 +36,7 @@ function App() {
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    // return <div>Error: {error.message}</div>;
   }
   const handleDownload = async () => {
     if (!data?.data?.id || !data?.data?.link) {
@@ -44,8 +44,8 @@ function App() {
       return;
     }
 
-    const postUrl = `https://uat.tteld.com/api/apps/downloads-up/${data.data.id}`;
-    const fileUrl = `https://uat.tteld.com/${data.data.link}`;
+    const postUrl = `https://front-api.ontime-logs.com/api/apps/downloads-up/${data.data.id}`;
+    const fileUrl = `https://front-api.ontime-logs.com/${data.data.link}`;
 
     try {
       await axios.post(postUrl);
@@ -63,89 +63,94 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <div className="wrapper">
-        <img style={{width:'200px'}} src="ontime.png" className="img" alt=""/>
-        <div className="text">
-          Ontime-logs is an industry-leading electronic logging device. Our ELD
-          compliance solution provides users with a wide variety of
-          comprehensive features.
-        </div>
+      <>
+        {/*<div>{error.message}</div>*/}
 
-        <div className="box"  onClick={handleDownload}>
-          <div>
-            <div className="textName">
+        <div className="container">
+        <div className="wrapper">
+          <img style={{width:'200px'}} src="ontime.png" className="img" alt=""/>
+          <div className="text">
+            Ontime-logs is an industry-leading electronic logging device. Our ELD
+            compliance solution provides users with a wide variety of
+            comprehensive features.
+          </div>
+
+          <div className="box"  onClick={handleDownload}>
+            <div>
+              <div className="textName">
               <span>
                 Ontime-logs <span className="middle">APK</span> download
               </span>
+              </div>
             </div>
           </div>
-        </div>
-  {/*{isFalse && <div className="others" onClick={togleOpen} >Other links</div>}*/}
+          {/*{isFalse && <div className="others" onClick={togleOpen} >Other links</div>}*/}
 
-{isOpen ? ( 
-  <>
-      <a
-          className="box"
-          href="https://us.tteld.com/update/4.apk"
-        >
-          <div>
-            <div className="textName">
+          {isOpen ? (
+              <>
+                <a
+                    className="box"
+                    href="https://us.tteld.com/update/4.apk"
+                >
+                  <div>
+                    <div className="textName">
               <span>
                 Android <span className="middle">APK 4.6.7</span> download
               </span>
-            </div>
-          </div>
-        </a>
-    <a
-          className="box"
-          href="https://play.google.com/store/apps/details?id=com.tteld.app&hl=ru&gl=US"
-        >
-          <div>
-            <div className="textName">
+                    </div>
+                  </div>
+                </a>
+                <a
+                    className="box"
+                    href="https://play.google.com/store/apps/details?id=com.tteld.app&hl=ru&gl=US"
+                >
+                  <div>
+                    <div className="textName">
               <span>
                 TT ELD <span className="middle">Android</span> app download
               </span>
-            </div>
-          </div>
-        </a>
-        
-         <a
-          className="box"
-          href="https://apps.apple.com/uz/app/tt-eld/id1596279099">
-          <div>
-            <div className="textName">
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                    className="box"
+                    href="https://apps.apple.com/uz/app/tt-eld/id1596279099">
+                  <div>
+                    <div className="textName">
               <span>
                 TT ELD <span className="middle">iOS</span> app download{" "}
               </span>
-            </div>
-          </div>
-        </a>
+                    </div>
+                  </div>
+                </a>
 
-    <a
-        className="box"
-        href="https://apps.apple.com/uz/app/tt-eld/id1596279099">
-      <div>
-        <div className="textName">
+                <a
+                    className="box"
+                    href="https://apps.apple.com/uz/app/tt-eld/id1596279099">
+                  <div>
+                    <div className="textName">
               <span>
                 IOSIX update <span className="middle">APK</span>
               </span>
+                    </div>
+                  </div>
+                </a>
+
+                {products.map((item) => (
+                    <a className="box" href={item.path} target="_blank" rel="noreferrer">
+                      <div>
+                        <div className="textName">{item.name2}</div>
+                      </div>
+                    </a>
+                ))}
+
+              </>
+          ):('')}
         </div>
       </div>
-    </a>
+      </>
 
-        {products.map((item) => (
-          <a className="box" href={item.path} target="_blank" rel="noreferrer">
-            <div>
-              <div className="textName">{item.name2}</div>
-            </div>
-          </a>
-        ))}
-
-        </>
-        ):('')}
-      </div>
-    </div>
   );
 }
 
