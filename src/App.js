@@ -4,18 +4,10 @@ import axios from "axios";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isFalse , setIsFalse] =useState(true)
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const togleFalse =()=>{
-    setIsOpen(!isFalse)
-  }
-  const togleOpen = ()=>{
-    setIsFalse(!isFalse)
-    setIsOpen(!isOpen)
-    
-  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
