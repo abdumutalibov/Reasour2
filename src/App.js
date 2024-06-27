@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://uat.tteld.com/api/apps/last-app?type=native');
+        const response = await axios.get('https://front-api.zippyeld.com/api/apps/last-app');
         setData(response.data);
       } catch (err) {
         setError(err);
@@ -28,15 +28,30 @@ function App() {
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    // return <div>Error: {error.message}</div>;
   }
-
   const handleDownload = async () => {
-    const fileUrl = `https://uat.tteld.com/${data?.link}`;
-    const anchor = document.createElement('a');
-    anchor.href = fileUrl;
-    anchor.download = 'apk';
-    anchor.click();
+    if (!data?.data?.id || !data?.data?.link) {
+      console.error('Invalid data for download');
+      return;
+    }
+
+    const postUrl = `https://front-api.zippyeld.com/api/apps/downloads-up/${data.data.id}`;
+    const fileUrl = `https://front-api.zippyeld.com/${data.data.link}`;
+
+    try {
+      await axios.post(postUrl);
+
+      const anchor = document.createElement('a');
+      anchor.href = fileUrl;
+      anchor.download = 'apk';
+      document.body.appendChild(anchor);
+      anchor.click();
+
+      document.body.removeChild(anchor);
+    } catch (error) {
+      console.error('Error during the download process:', error);
+    }
   };
   return (
     <div className="container">
@@ -48,7 +63,7 @@ function App() {
           comprehensive features.
         </div>
 
-        <a className="box" href="https://us.zippyeld.com/zippy.apk">
+        <div className="box" onClick={handleDownload}>
           <div>
             <div className="textName">
               <span>
@@ -56,7 +71,7 @@ function App() {
               </span>
             </div>
           </div>
-        </a>
+        </div>
   {/*{isFalse && <div className="others" onClick={togleOpen} >Other links</div>}*/}
 
 {isOpen ? ( 
