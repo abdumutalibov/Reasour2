@@ -62,6 +62,9 @@ function App() {
           compliance solution provides users with a wide variety of
           comprehensive features.
         </div>
+        <div className="textVersion">
+          App version: {data?.data?.appVersion}
+        </div>
 
         <div className="box" onClick={handleDownload}>
           <div>
