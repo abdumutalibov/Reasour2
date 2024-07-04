@@ -38,9 +38,17 @@
     max-width: 330px;
     margin: 16px 0 24px 0;
     text-align: center;
-
     color: #000000;
-
+}
+.textAppVersion{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12.5px;
+    line-height: 22px;
+    max-width: 330px;
+    margin: 0px 0 10px 0;
+    text-align: center;
+    color: #000000;
 }
 
 .box {
