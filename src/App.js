@@ -58,12 +58,7 @@ function App() {
   return (
     <div className="container">
       <div className="wrapper">
-        <img
-          src="logozippy.svg"
-          className="img"
-          alt=""
-          style={{ width: "200px" }}
-        />
+        <img src="Logo.svg" className="img" alt="" style={{ width: "200px" }} />
         <div className="text">
           Zippy ELD is an industry-leading electronic logging device. Our ELD
           compliance solution provides users with a wide variety of
