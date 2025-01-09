@@ -1,9 +1,9 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,7 +11,9 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://front-api.zippyeld.com/api/apps/last-app');
+        const response = await axios.get(
+          "https://front-api.zippyeld.com/api/apps/last-app"
+        );
         setData(response.data);
       } catch (err) {
         setError(err);
@@ -32,7 +34,7 @@ function App() {
   }
   const handleDownload = async () => {
     if (!data?.data?.id || !data?.data?.link) {
-      console.error('Invalid data for download');
+      console.error("Invalid data for download");
       return;
     }
 
@@ -42,102 +44,108 @@ function App() {
     try {
       await axios.post(postUrl);
 
-      const anchor = document.createElement('a');
+      const anchor = document.createElement("a");
       anchor.href = fileUrl;
-      anchor.download = 'apk';
+      anchor.download = "apk";
       document.body.appendChild(anchor);
       anchor.click();
 
       document.body.removeChild(anchor);
     } catch (error) {
-      console.error('Error during the download process:', error);
+      console.error("Error during the download process:", error);
     }
   };
   return (
     <div className="container">
       <div className="wrapper">
-        <img src="Logo.svg" className="img" alt="" style={{width:'200px'}}/>
+        <img
+          src="logozippy.svg"
+          className="img"
+          alt=""
+          style={{ width: "200px" }}
+        />
         <div className="text">
           Zippy ELD is an industry-leading electronic logging device. Our ELD
           compliance solution provides users with a wide variety of
           comprehensive features.
         </div>
-        <div className="textVersion">
-          App version: {data?.data?.appVersion}
-        </div>
+        <div className="textVersion">App version: {data?.data?.appVersion}</div>
 
         <div className="box" onClick={handleDownload}>
           <div>
             <div className="textName">
-              <span>
-                Android <span className="middle">APK</span> download
-              </span>
+              <span>Download App</span>
             </div>
           </div>
         </div>
-  {/*{isFalse && <div className="others" onClick={togleOpen} >Other links</div>}*/}
+        {/*{isFalse && <div className="others" onClick={togleOpen} >Other links</div>}*/}
 
-{isOpen ? ( 
-  <>
-      <a
-          className="box"
-          href="https://us.tteld.com/update/4.apk"
-        >
-          <div>
-            <div className="textName">
-              <span>
-                Android <span className="middle">APK 4.6.7</span> download
-              </span>
-            </div>
-          </div>
-        </a>
-    <a
-          className="box"
-          href="https://play.google.com/store/apps/details?id=com.tteld.app&hl=ru&gl=US"
-        >
-          <div>
-            <div className="textName">
-              <span>
-                TT ELD <span className="middle">Android</span> app download
-              </span>
-            </div>
-          </div>
-        </a>
-        
-         <a
-          className="box"
-          href="https://apps.apple.com/uz/app/tt-eld/id1596279099">
-          <div>
-            <div className="textName">
-              <span>
-                TT ELD <span className="middle">iOS</span> app download{" "}
-              </span>
-            </div>
-          </div>
-        </a>
+        {isOpen ? (
+          <>
+            <a className="box" href="https://us.tteld.com/update/4.apk">
+              <div>
+                <div className="textName">
+                  <span>
+                    Android <span className="middle">APK 4.6.7</span> download
+                  </span>
+                </div>
+              </div>
+            </a>
+            <a
+              className="box"
+              href="https://play.google.com/store/apps/details?id=com.tteld.app&hl=ru&gl=US"
+            >
+              <div>
+                <div className="textName">
+                  <span>
+                    TT ELD <span className="middle">Android</span> app download
+                  </span>
+                </div>
+              </div>
+            </a>
 
-    <a
-        className="box"
-        href="https://apps.apple.com/uz/app/tt-eld/id1596279099">
-      <div>
-        <div className="textName">
-              <span>
-                IOSIX update <span className="middle">APK</span>
-              </span>
-        </div>
-      </div>
-    </a>
+            <a
+              className="box"
+              href="https://apps.apple.com/uz/app/tt-eld/id1596279099"
+            >
+              <div>
+                <div className="textName">
+                  <span>
+                    TT ELD <span className="middle">iOS</span> app download{" "}
+                  </span>
+                </div>
+              </div>
+            </a>
 
-        {products.map((item) => (
-          <a className="box" href={item.path} target="_blank" rel="noreferrer">
-            <div>
-              <div className="textName">{item.name2}</div>
-            </div>
-          </a>
-        ))}
+            <a
+              className="box"
+              href="https://apps.apple.com/uz/app/tt-eld/id1596279099"
+            >
+              <div>
+                <div className="textName">
+                  <span>
+                    IOSIX update <span className="middle">APK</span>
+                  </span>
+                </div>
+              </div>
+            </a>
 
-        </>
-        ):('')}
+            {products.map((item) => (
+              <a
+                className="box"
+                href={item.path}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <div>
+                  <div className="textName">{item.name2}</div>
+                </div>
+              </a>
+            ))}
+          </>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
@@ -146,7 +154,6 @@ function App() {
 export default App;
 
 const products = [
-
   {
     id: 4,
 
@@ -198,10 +205,8 @@ const products = [
   {
     id: 9,
     name2: "Malfunction",
-    title:
-      "The guide when eld or driver application does not work as intended",
+    title: "The guide when eld or driver application does not work as intended",
     price: "Download",
     path: "https://us.tteld.com/docs/EldMalfunction.pdf",
   },
-
 ];
