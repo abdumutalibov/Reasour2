@@ -1,9 +1,59 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+import axios from "axios";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isFalse, setIsFalse] = useState(true);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://front-api.tteld.com/api/apps/last-app"
+        );
+        setData(response.data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  const handleDownload = async () => {
+    if (!data?.data?.id || !data?.data?.link) {
+      console.error("Invalid data for download");
+      return;
+    }
+
+    const postUrl = `https://front-api.tteld.com/api/apps/downloads-up/${data.data.id}`;
+    const fileUrl = `https://front-api.tteld.com/${data.data.link}`;
+
+    try {
+      await axios.post(postUrl);
+
+      const anchor = document.createElement("a");
+      anchor.href = fileUrl;
+      anchor.download = "apk";
+      document.body.appendChild(anchor);
+      anchor.click();
+
+      document.body.removeChild(anchor);
+    } catch (error) {
+      console.error("Error during the download process:", error);
+    }
+  };
+
   const togleFalse = () => {
     setIsOpen(!isFalse);
   };
@@ -20,7 +70,9 @@ function App() {
           compliance solution provides users with a wide variety of
           comprehensive features.
         </div>
-
+        <div className="textAppVersion">
+          App version: {data?.data?.appVersion}
+        </div>
         <a className="box" href="https://us.tteld.com/update/tteld.apk">
           <div>
             <div className="textName">
