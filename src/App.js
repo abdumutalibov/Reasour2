@@ -7,12 +7,12 @@ function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [isFalse, setIsFalse] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://front-api.evoeld.com/api/apps/last-app"
+          "https://front-api.tteld.com/api/apps/last-app"
         );
         setData(response.data);
       } catch (err) {
@@ -38,8 +38,8 @@ function App() {
       return;
     }
 
-    const postUrl = `https://front-api.evoeld.com/api/apps/downloads-up/${data.data.id}`;
-    const fileUrl = `https://front-api.evoeld.com/${data.data.link}`;
+    const postUrl = `https://front-api.tteld.com/api/apps/downloads-up/${data.data.id}`;
+    const fileUrl = `https://front-api.tteld.com/${data.data.link}`;
 
     try {
       await axios.post(postUrl);
@@ -56,6 +56,11 @@ function App() {
     }
   };
 
+  const togleOpen = () => {
+    setIsFalse(!isFalse);
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       {/*<div>{error.message}</div>*/}
@@ -63,13 +68,13 @@ function App() {
       <div className="container">
         <div className="wrapper">
           <img
-            style={{ width: "200px" }}
-            src="evoeld.svg"
+            style={{ width: "140px" }}
+            src="LogoBlack.png"
             className="img"
             alt=""
           />
           <div className="text">
-            EVO ELD is an industry-leading electronic logging device. Our ELD
+            TT ELD is an industry-leading electronic logging device. Our ELD
             compliance solution provides users with a wide variety of
             comprehensive features.
           </div>
@@ -81,17 +86,21 @@ function App() {
             <div>
               <div className="textName">
                 <span>
-                  {/* evoeld <span className="middle">APK</span> download */}
+                  {/* tteld <span className="middle">APK</span> download */}
                   Download App
                 </span>
               </div>
             </div>
           </div>
-          {/*{isFalse && <div className="others" onClick={togleOpen} >Other links</div>}*/}
+          {isFalse && (
+            <div className="others" onClick={togleOpen}>
+              Other links
+            </div>
+          )}
 
           {isOpen ? (
             <>
-              <a className="box" href="https://us.tteld.com/update/4.apk">
+              {/* <a className="box" href="https://us.tteld.com/update/4.apk">
                 <div>
                   <div className="textName">
                     <span>
@@ -112,7 +121,7 @@ function App() {
                     </span>
                   </div>
                 </div>
-              </a>
+              </a> */}
 
               <a
                 className="box"
