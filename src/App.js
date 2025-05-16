@@ -12,7 +12,7 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://front-api.evoeld.com/api/apps/last-app"
+          "https://front-api.rulereld.com/api/apps/last-app"
         );
         setData(response.data);
       } catch (err) {
@@ -38,8 +38,8 @@ function App() {
       return;
     }
 
-    const postUrl = `https://front-api.evoeld.com/api/apps/downloads-up/${data.data.id}`;
-    const fileUrl = `https://front-api.evoeld.com/${data.data.link}`;
+    const postUrl = `https://front-api.rulereld.com/api/apps/downloads-up/${data.data.id}`;
+    const fileUrl = `https://front-api.rulereld.com/${data.data.link}`;
 
     try {
       await axios.post(postUrl);
@@ -64,12 +64,12 @@ function App() {
         <div className="wrapper">
           <img
             style={{ width: "200px" }}
-            src="evoeld.svg"
+            src="rulereld.svg"
             className="img"
             alt=""
           />
           <div className="text">
-            EVO ELD is an industry-leading electronic logging device. Our ELD
+            Ruler ELD is an industry-leading electronic logging device. Our ELD
             compliance solution provides users with a wide variety of
             comprehensive features.
           </div>
@@ -81,7 +81,7 @@ function App() {
             <div>
               <div className="textName">
                 <span>
-                  {/* evoeld <span className="middle">APK</span> download */}
+                  {/* rulereld <span className="middle">APK</span> download */}
                   Download App
                 </span>
               </div>
